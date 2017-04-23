@@ -1,0 +1,74 @@
+<!-- Place our header / nav, only show if now error -->
+<!-- https://github.com/jelbourn/material2-app/blob/master/src/app/app.component.html -->
+<md-sidenav-container class="nav">
+
+  <!-- Mobile Nav Bar -->
+  <md-sidenav #sidenav mode="side" class="nav__sidenav">
+
+    <!-- title of the sidenav -->
+    <h2 class="center-text animated fadeIn">Navigation</h2>
+
+    <!-- List all of our page titles -->
+    <div class="nav__sidenav__page-link animated fadeInLeft"
+        [hidden]="sayonaraService.getSayonaraError()"
+        *ngFor="let page of navPages; let pageIndex = index;"
+        [ngClass]="{'nav__sidenav__page-link--active-page': routeNavigator.isCurrentPage(pageTitle)}"
+        (click)="routeNavigator.goToPage(page.title, sidenav)">
+        <hr>
+        <div class="nav__sidenav__page-link__text">{{page.title}}</div>
+    </div>
+
+    <!-- Close Link -->
+    <div class="nav__sidenav__page-link animated fadeInLeft"
+        (click)="sidenav.toggle()">
+        <hr>
+        <div class="nav__sidenav__page-link__text">Close</div>
+        <hr>
+    </div>
+  </md-sidenav>
+
+  <!-- Desktop Nav Bar -->
+  <md-toolbar color="primary">
+    <button class="nav__icon-button" [hidden]="sayonaraError" (click)="sidenav.toggle()">
+      <i class="material-icons app-toolbar-menu">menu</i>
+    </button>
+
+    <div class="nav__title">
+        {{siteTitle}}
+    </div>
+
+    <!-- List all of our page titles -->
+    <div class="nav__page-link"
+        [hidden]="sayonaraService.getSayonaraError()"
+        *ngFor="let page of navPages"
+        [ngClass]="{'nav__page-link--active-page': routeNavigator.isCurrentPage(page.title)}"
+        (click)="routeNavigator.goToPage(page.title)">
+        {{page.title}}
+    </div>
+
+    <span class="app-toolbar-filler"></span>
+  </md-toolbar>
+
+  <!-- Overlay to show when sidenav opened -->
+  <div class="nav__overlay"
+      [ngClass]="{'nav__overlay--show': sidenav.opened}"
+      (click)="clickOutsideSideNav(sidenav)">
+  </div>
+
+<!-- Main Application -->
+<div class="c-app" [hidden]="sayonaraService.getSayonaraError()">
+
+    <router-outlet></router-outlet>
+    <!-- Routed views go here -->
+
+    <!-- Place our footer -->
+
+</div>
+
+<!-- Our view if there is a sayonara error -->
+<div class="c-app--error" [hidden]="!sayonaraService.getSayonaraError()">
+    <!-- Show the Error Component -->
+    <sayonara-error></sayonara-error>
+</div>
+
+</md-sidenav-container>

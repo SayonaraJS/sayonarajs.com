@@ -1,0 +1,15 @@
+//Import our helper SASS libs
+@import 'animate';
+@import 'bem';
+@import 'variables';
+@import 'mediaQuery';
+@import 'general';
+@import 'loadingSpinner';
+
+//Styling for ngMaterial element
+@import 'ngMaterial';
+
+//Import our Component scss
+@import '../app/app.component';
+@import '../app/components/page/page.component';
+@import '../app/components/sayonara-error/sayonara-error.component';

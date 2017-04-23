@@ -1,0 +1,36 @@
+//Import our fonts (from google Fonts)
+@import url('https://fonts.googleapis.com/css?family=Droid+Sans|Open+Sans|Roboto|Source+Sans+Pro|Ubuntu');
+
+//Styles that apply to the entire page
+html {
+    background-color: $bgColor;
+    position: relative;
+    height: 100%;
+}
+body {
+    margin: 0;
+    height: 100%;
+}
+
+app-root {
+  height: 100%;
+}
+
+
+* {
+    font-family: 'Roboto','Open Sans', 'Source Sans Pro', 'Droid Sans', 'Ubuntu', sans-serif;
+}
+img {
+    max-width: 100%;
+}
+
+//General Classes we can use app wide
+.center {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.center-text {
+    @extend .center;
+    text-align: center;
+}

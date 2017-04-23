@@ -1,0 +1,113 @@
+.nav {
+    background-color: $bgColor;
+
+    @include element('sidenav') {
+        position: absolute;
+        min-width: calc(#{$mobile-width} - 100px);
+        width: calc(#{$mobile-width} - 100px);
+        padding: 10px;
+        background-color: $navColor;
+
+        @include element('page-link') {
+            @extend .center-text;
+            font-size: 22px;
+            font-weight: bold;
+            cursor: pointer;
+
+            @include element('text') {
+                padding-top: 15px;
+                padding-bottom: 15px;
+                padding-left: 10px;
+                padding-right: 10px;
+            }
+
+            @include modifier('active-page') {
+                .nav__sidenav__page-link__text {
+                    background-color: lighten( $navColor, 4% );
+                }
+            }
+        }
+    }
+
+    @include element('title') {
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+
+
+    @include element('page-link') {
+        display: flex;
+        align-items: center;
+        margin-left: 10px;
+        margin-right: 10px;
+        padding-left: 10px;
+        padding-right: 10px;
+        height: 100%;
+        cursor: pointer;
+
+        @include modifier('active-page') {
+            background-color: lighten( $navColor, 4% );
+        }
+
+        //Hide on mobile displays
+        @include all-mobile() {
+            display: none;
+        }
+    };
+
+    @include element('icon-button') {
+      box-shadow: none;
+      user-select: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      filter: none;
+      font-weight: normal;
+      height: auto;
+      line-height: inherit;
+      margin: 0;
+      min-width: 0;
+      padding: 0;
+      text-align: left;
+      text-decoration: none;
+
+      //Hide on desktops and things
+      @include not-mobile() {
+          display: none;
+      }
+    }
+
+    @include element('overlay') {
+        z-index: 5;
+        background-color: $transparent-50;
+        position: fixed;
+        width: 100%;
+        height: 0px;
+        margin-top: 0px;
+        opacity: 0;
+
+        //Preety overlay color transition
+        transition: opacity 0.5s;
+
+        @include modifier('show') {
+            opacity: 1;
+            height: calc(100% + 100px);
+            min-height: calc(100vh + 100px);
+            margin-top: -100px;
+        }
+    }
+}
+
+.c-app {
+    @extend .center;
+
+    max-width: $large-desktop-width;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+
+    @include all-mobile() {
+        width: 95%;
+    }
+}
