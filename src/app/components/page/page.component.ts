@@ -19,10 +19,6 @@ export class PageComponent implements OnInit {
 
   page = {};
 
-  //Bind Html
-  //http://stackoverflow.com/questions/31548311/angular-2-html-binding
-  pageContent = '<h1>Loading Page...</h1>'
-
   constructor(
     private activatedRoute: ActivatedRoute,
     private sayonaraService: SayonaraPublicService,

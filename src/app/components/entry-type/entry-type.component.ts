@@ -17,10 +17,7 @@ export class EntryTypeComponent implements OnInit {
 
   pageTitle = '';
   entryType = {};
-
-  //Bind Html
-  //http://stackoverflow.com/questions/31548311/angular-2-html-binding
-  entryTypeContent = '<h1>Loading Page...</h1>'
+  docFilter = '';
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -58,4 +55,20 @@ export class EntryTypeComponent implements OnInit {
     });
   }
 
+  // Function to return if the entry is valid for the filter
+  entryFilter(entry) {
+    // Set all compared string to lower case and replace whitespace
+    const entryTitle = entry.title.toLowerCase().replace(/\s+/g, '');
+    let entryField = '';
+    if(entry.customFields &&
+    entry.customFields.fields &&
+    entry.customFields.fields.length > 0) {
+      entryField = entry.customFields.fields[0].toLowerCase().replace(/\s+/g, '');
+    }
+
+    const lowerCaseFilter = this.docFilter.toLowerCase().replace(/\s+/g, '');
+
+    return entryTitle.includes(lowerCaseFilter) ||
+      entryField.includes(lowerCaseFilter);
+  }
 }

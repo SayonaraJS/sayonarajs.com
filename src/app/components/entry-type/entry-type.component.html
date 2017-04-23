@@ -5,4 +5,20 @@
   <div>
     {{entryType.description}}
   </div>
+
+  <!-- Search box to look through the documentation entries -->
+  <md-input-container>
+    <input mdInput placeholder="Search for a doc..." [(ngModel)]="docFilter">
+  </md-input-container>
+
+  <div class="c-entry-type__entry-list">
+    <div class="c-entry-type__entry-list__entry"
+      *ngFor="let entry of entryType.entries">
+      <div *ngIf="entryFilter(entry)"
+        (click)="routeNavigator
+          .goToEntry(pageTitle, entryType.title, entry.title)">
+        {{entry.title}}
+      </div>
+    </div>
+  </div>
 </div>

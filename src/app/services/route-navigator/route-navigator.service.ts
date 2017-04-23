@@ -58,7 +58,7 @@ export class RouteNavigatorService {
   goToEntry(pageTitle: string, entryTypeTitle: string, entryTitle: string) {
       //Go to the route
       this.router.navigate(['/page/' + pageTitle + '/type/' +
-        entryTypeTitle + '/entry/' + entryTypeTitle]);
+        entryTypeTitle + '/entry/' + entryTitle]);
       this.currentEntry = entryTitle;
   }
 

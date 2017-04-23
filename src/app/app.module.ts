@@ -8,6 +8,7 @@ import { Routes, RouterModule } from '@angular/router';
 //Material Design
 //https://github.com/jelbourn/material2-app
 import { MaterialModule } from '@angular/material';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
 import { PageComponent } from './components/page/page.component';
@@ -40,6 +41,7 @@ const appRoutes: Routes = [
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     FormsModule,
     HttpModule,
     JsonpModule,

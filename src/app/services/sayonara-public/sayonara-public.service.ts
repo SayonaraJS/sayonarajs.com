@@ -131,4 +131,24 @@ export class SayonaraPublicService {
 
     return foundEntryType;
   }
+
+  // Function to return a entry type inside a page, by it's title
+  getSayonaraEntry(pageTitle: string, entryTypeTitle: string,
+    entryTitle: string, siteJson: any, callback: any): any {
+    // Get the entry type
+    let sayonaraEntryType = this.getSayonaraEntryType(pageTitle, entryTypeTitle,
+      siteJson, false);
+    // Then search the page for the entry type
+    let foundEntry = false;
+    if(!sayonaraEntryType.entries) return false;
+    sayonaraEntryType.entries.some((entry) => {
+      if(entryTitle === entry.title) {
+        foundEntry = entry;
+        return true;
+      }
+      return false;
+    });
+
+    return foundEntry;
+  }
 }

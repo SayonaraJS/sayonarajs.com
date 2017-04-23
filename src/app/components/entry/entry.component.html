@@ -1,3 +1,9 @@
-<p>
-  entry works!
-</p>
+<div class="c-entry">
+  <h1 class="c-entry__title">
+    {{entry.title}}
+  </h1>
+
+  <div class="c-entry__content"
+    [innerHTML]="entry.content | safeHtml">
+  </div>
+</div>
