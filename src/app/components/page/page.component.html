@@ -3,26 +3,17 @@
     <!-- Page Title -->
     <h1 class="center-text">{{pageTitle}}</h1>
 
-    <!-- display the page content in a card if no entryTypes -->
-    <md-card class="center" *ngIf="pageEntries.length < 1">
-        <!-- Page Content -->
-        <div [innerHTML]="pageContent | safeHtml">
+    <!-- Page Content -->
+    <div [innerHTML]="pageContent | safeHtml">
+    </div>
+
+    <!-- Repeat through all of our entry types -->
+    <md-card class="c-page__entry-container__entry"
+      *ngFor="let entryType of pageEntryTypes">
+        <!-- List the entry type -->
+        <h3 class="center-text">{{entryType.title}}</h3>
+        <div class="center-text">
+          {{entryType.description}}
         </div>
     </md-card>
-
-    <!-- Display the page content, and a flex box of cards of the pages -->
-    <div class="center" *ngIf="pageEntries.length >= 1">
-        <!-- Page Content -->
-        <div class="center-text" [innerHTML]="pageContent | safeHtml">
-        </div>
-
-        <div class="c-page__entry-container">
-            <!-- Repeat through all of our entries -->
-            <md-card class="c-page__entry-container__entry" *ngFor="let entry of pageEntries">
-                <!-- Entry Content -->
-                <div [innerHTML]="entry.content | safeHtml">
-                </div>
-            </md-card>
-        </div>
-    </div>
 </div>

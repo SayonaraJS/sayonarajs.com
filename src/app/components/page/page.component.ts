@@ -17,8 +17,8 @@ export class PageComponent implements OnInit {
   //If our page is ready to be displayed
   pageLoaded = false;
 
-  pageTitle = 'Home';
-  pageEntries = [];
+  pageTitle = '';
+  pageEntryTypes = [];
 
   //Bind Html
   //http://stackoverflow.com/questions/31548311/angular-2-html-binding
@@ -40,6 +40,7 @@ export class PageComponent implements OnInit {
         this.pageTitle = currentPageTitle;
         let sayonaraPage = this.getSayonaraPage(currentPageTitle, success);
         if(sayonaraPage && sayonaraPage.content) {
+          this.routeNavigator.goToPage(currentPageTitle);
             this.pageContent = sayonaraPage.content;
         } else {
             //Go to the default page
@@ -57,7 +58,7 @@ export class PageComponent implements OnInit {
   getSayonaraPage(title: String, siteJson: any): any {
     //Reset our page
     this.pageLoaded = false;
-    this.pageEntries = [];
+    this.pageEntryTypes = [];
 
     //Loop through the site Json
     let foundPage = false;
@@ -81,25 +82,15 @@ export class PageComponent implements OnInit {
       return;
     }
     //Get the entries on the page
-    this.getSayonaraPageEntries(foundPage);
+    this.getSayonaraPageEntryTypes(foundPage);
     //Return the found page
     return foundPage;
   }
 
   //Function to get all the entries of a page
-  getSayonaraPageEntries(page) {
-      //Contenate all entries into our page's page entries
-      let entries = [];
-      if(page.entryTypes.length > 0) {
-          page.entryTypes.forEach((entryType) => {
-             if(entryType.entries.length > 0) {
-                 entries = entries.concat(entryType.entries);
-             }
-          });
-      }
-
-      //Organize the entries
-      this.pageEntries = this.sayonaraService.sortByOrder(entries);
+  getSayonaraPageEntryTypes(page) {
+      //Simply set the entry types of the page
+      this.pageEntryTypes = page.entryTypes;
   }
 
 }

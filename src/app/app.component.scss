@@ -9,22 +9,19 @@
         background-color: $navColor;
 
         @include element('page-link') {
-            @extend .center-text;
-            font-size: 22px;
-            font-weight: bold;
+            font-size: 20px;
             cursor: pointer;
 
             @include element('text') {
-                padding-top: 15px;
-                padding-bottom: 15px;
+                padding-top: 5px;
+                padding-bottom: 5px;
                 padding-left: 10px;
                 padding-right: 10px;
             }
 
             @include modifier('active-page') {
-                .nav__sidenav__page-link__text {
-                    background-color: lighten( $navColor, 4% );
-                }
+                //background-color: lighten( $navColor, 4% );
+                text-decoration: underline;
             }
         }
     }

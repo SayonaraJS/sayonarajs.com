@@ -37,7 +37,6 @@ export class AppComponent implements OnInit {
       this.getNavPages(success);
 
       //Page component will handle loading the default page
-
     }, (error) => {
       this.sayonaraService.toggleSayonaraError();
       LoggerService.error("Sayonara API error: ", error);

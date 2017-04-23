@@ -45,4 +45,9 @@ export class RouteNavigatorService {
       return title == this.currentPage;
   }
 
+  // Function to return the current page
+  getCurrentPage() {
+    return this.currentPage;
+  }
+
 }
