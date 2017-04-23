@@ -10,8 +10,7 @@ import { LoggerService } from '../../services/logger/logger.service';
 
 @Component({
   selector: 'app-entry',
-  templateUrl: './entry.component.html',
-  styleUrls: ['./entry.component.scss']
+  templateUrl: './entry.component.html'
 })
 export class EntryComponent implements OnInit {
 

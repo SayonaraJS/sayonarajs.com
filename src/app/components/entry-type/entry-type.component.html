@@ -1,4 +1,4 @@
-<div class="c-entry-type">
+<div class="c-entry-type animated fadeIn">
   <h1 class="center-text">
     {{entryType.title}}
   </h1>
@@ -7,16 +7,19 @@
   </div>
 
   <!-- Search box to look through the documentation entries -->
-  <md-input-container>
-    <input mdInput placeholder="Search for a doc..." [(ngModel)]="docFilter">
-  </md-input-container>
+  <div class="c-entry-type__search">
+    <md-input-container class="c-entry-type__search__input">
+      <input mdInput placeholder="Search for a doc..." [(ngModel)]="docFilter">
+    </md-input-container>
+  </div>
 
-  <div class="c-entry-type__entry-list">
+  <div class="c-entry-type__entry-list center-text">
     <div class="c-entry-type__entry-list__entry"
       *ngFor="let entry of entryType.entries">
-      <div *ngIf="entryFilter(entry)"
-        (click)="routeNavigator
-          .goToEntry(pageTitle, entryType.title, entry.title)">
+      <div class="c-entry-type__entry-list__entry__title"
+      (click)="routeNavigator
+        .goToEntry(pageTitle, entryType.title, entry.title)"
+      *ngIf="entryFilter(entry)">
         {{entry.title}}
       </div>
     </div>

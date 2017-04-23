@@ -1,0 +1,30 @@
+.c-entry-type {
+
+  @include element('search') {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    max-width: 600px;
+
+    margin-top: 25px;
+    margin-bottom: 25px;
+
+    // Overriding default angular material styles
+    @include element('input') {
+      display: block !important;
+    }
+  }
+
+  @include element('entry-list') {
+    max-width: 600px;
+    text-align: left;
+    @include element('entry') {
+      @include element('title') {
+        color: $links;
+        text-decoration: underline;
+        cursor: pointer;
+      }
+    }
+  }
+}

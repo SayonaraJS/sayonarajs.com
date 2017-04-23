@@ -11,6 +11,12 @@
             width: 100%;
             margin: 10px;
 
+            @include element('title') {
+              color: $links;
+              text-decoration: underline;
+              cursor: pointer;
+            }
+
             @include all-mobile() {
                 width: 95%;
                 margin: 5px;
