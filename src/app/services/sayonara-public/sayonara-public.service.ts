@@ -92,4 +92,43 @@ export class SayonaraPublicService {
     //Return the sorted array by order
     return sayonaraArray;
   }
+
+  //Function to show a page from the site json
+  getSayonaraPage(title: String, siteJson: any, callback: any): any {
+    //Loop through the site Json
+    let foundPage = false;
+    siteJson.pages.some((page) => {
+      if(page.title.toLowerCase() == title.toLowerCase()) {
+        //Page found!
+        //Return the page
+        foundPage = page;
+        if(callback) callback();
+        return true;
+      }
+      //Page not found, keep going
+      return false;
+    });
+
+    //Return the found page
+    return foundPage;
+  }
+
+  // Function to return a entry type inside a page, by it's title
+  getSayonaraEntryType(pageTitle: string, entryTypeTitle: string,
+    siteJson: any, callback: any): any {
+    // Get the page
+    let sayonaraPage = this.getSayonaraPage(pageTitle, siteJson, false);
+    // Then search the page for the entry type
+    let foundEntryType = false;
+    if(!sayonaraPage.entryTypes) return false;
+    sayonaraPage.entryTypes.some((entryType) => {
+      if(entryTypeTitle === entryType.title) {
+        foundEntryType = entryType;
+        return true;
+      }
+      return false;
+    });
+
+    return foundEntryType;
+  }
 }

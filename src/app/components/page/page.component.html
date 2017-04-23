@@ -1,17 +1,20 @@
 <!-- Wrap in Ng-show for animation on page change -->
 <div class="c-page animated fadeIn" [hidden]="!pageLoaded">
     <!-- Page Title -->
-    <h1 class="center-text">{{pageTitle}}</h1>
+    <h1 class="center-text">{{page.title}}</h1>
 
     <!-- Page Content -->
-    <div [innerHTML]="pageContent | safeHtml">
+    <div [innerHTML]="page.content | safeHtml">
     </div>
 
     <!-- Repeat through all of our entry types -->
     <md-card class="c-page__entry-container__entry"
-      *ngFor="let entryType of pageEntryTypes">
+      *ngFor="let entryType of page.entryTypes">
         <!-- List the entry type -->
-        <h3 class="center-text">{{entryType.title}}</h3>
+        <h3 class="center-text"
+          (click)="routeNavigator.goToEntryType(page.title, entryType.title)">
+          {{entryType.title}}
+        </h3>
         <div class="center-text">
           {{entryType.description}}
         </div>

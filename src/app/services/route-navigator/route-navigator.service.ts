@@ -14,6 +14,10 @@ export class RouteNavigatorService {
   private sayonaraPages: any;
   //Our current page
   private currentPage = '';
+  // Our current Entry Type
+  private currentEntryType = '';
+  // Our current Entry
+  private currentEntry = '';
 
   constructor(
     private router: Router,
@@ -32,12 +36,30 @@ export class RouteNavigatorService {
   }
 
   //Function to go to a page from the sidenav
-  goToPage(title: string, sidenav?: any) {
+  goToPage(pageTitle: string, sidenav?: any) {
       //Go to the route
-      this.router.navigate(['/page/' + title]);
-      this.currentPage = title;
+      this.router.navigate(['/page/' + pageTitle]);
+      this.currentPage = pageTitle;
+      this.currentEntryType = '';
+      this.currentEntry = '';
       //Toggle the sidenav
       if(sidenav) sidenav.toggle();
+  }
+
+  //Function to go to an entryType
+  goToEntryType(pageTitle: string, entryTypeTitle: string) {
+      //Go to the route
+      this.router.navigate(['/page/' + pageTitle + '/type/' + entryTypeTitle]);
+      this.currentEntryType = entryTypeTitle;
+      this.currentEntry = '';
+  }
+
+  //Function to go to an entry
+  goToEntry(pageTitle: string, entryTypeTitle: string, entryTitle: string) {
+      //Go to the route
+      this.router.navigate(['/page/' + pageTitle + '/type/' +
+        entryTypeTitle + '/entry/' + entryTypeTitle]);
+      this.currentEntry = entryTitle;
   }
 
   //Function to return if the current title refers to the current page

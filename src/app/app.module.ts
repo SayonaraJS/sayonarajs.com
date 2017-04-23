@@ -19,9 +19,9 @@ import { EntryComponent } from './components/entry/entry.component';
 //Declare our routes
 //https://angular.io/docs/ts/latest/guide/router.html
 const appRoutes: Routes = [
-  { path: 'page/:title', component: PageComponent },
-  { path: 'page/type/:title', component: EntryTypeComponent },
-  { path: 'page/type/entry/:title', component: EntryComponent },
+  { path: 'page/:pageTitle', component: PageComponent },
+  { path: 'page/:pageTitle/type/:entryTypeTitle', component: EntryTypeComponent },
+  { path: 'page/:pageTitle/type/:entryTypeTitle/entry/:entryTitle', component: EntryComponent },
   { path: '**',   redirectTo: 'page/notfound' },
 ];
 // const routes: Routes = [

@@ -17,8 +17,7 @@ export class PageComponent implements OnInit {
   //If our page is ready to be displayed
   pageLoaded = false;
 
-  pageTitle = '';
-  pageEntryTypes = [];
+  page = {};
 
   //Bind Html
   //http://stackoverflow.com/questions/31548311/angular-2-html-binding
@@ -36,12 +35,18 @@ export class PageComponent implements OnInit {
       //Success!
       //Then get our route params
       this.activatedRoute.params.subscribe((params) => {
-        let currentPageTitle = params['title'];
-        this.pageTitle = currentPageTitle;
-        let sayonaraPage = this.getSayonaraPage(currentPageTitle, success);
+        let currentPageTitle = params['pageTitle'];
+        //Reset our page
+        this.pageLoaded = false;
+        let sayonaraPage = this.sayonaraService
+        .getSayonaraPage(currentPageTitle, success, () => {
+          setTimeout(() => {
+              this.pageLoaded = true;
+          }, 100)
+        });
         if(sayonaraPage && sayonaraPage.content) {
           this.routeNavigator.goToPage(currentPageTitle);
-            this.pageContent = sayonaraPage.content;
+          this.page = sayonaraPage;
         } else {
             //Go to the default page
             this.routeNavigator.goToDefaultPage();
@@ -52,45 +57,6 @@ export class PageComponent implements OnInit {
       LoggerService.error('page error!');
       this.sayonaraService.toggleSayonaraError();
     });
-  }
-
-  //Function to show a page from the site json
-  getSayonaraPage(title: String, siteJson: any): any {
-    //Reset our page
-    this.pageLoaded = false;
-    this.pageEntryTypes = [];
-
-    //Loop through the site Json
-    let foundPage = false;
-    siteJson.pages.some((page) => {
-      if(page.title.toLowerCase() == title.toLowerCase()) {
-        //Page found!
-        //Return the page
-        foundPage = page;
-        setTimeout(() => {
-            this.pageLoaded = true;
-        }, 100)
-        return true;
-      }
-      //Page not found, keep going
-      return false;
-    });
-
-    //Ensure we found a page
-    if(!foundPage) {
-      this.routeNavigator.goToDefaultPage();
-      return;
-    }
-    //Get the entries on the page
-    this.getSayonaraPageEntryTypes(foundPage);
-    //Return the found page
-    return foundPage;
-  }
-
-  //Function to get all the entries of a page
-  getSayonaraPageEntryTypes(page) {
-      //Simply set the entry types of the page
-      this.pageEntryTypes = page.entryTypes;
   }
 
 }
