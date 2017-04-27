@@ -15,7 +15,7 @@ import { LoggerService } from '../../services/logger/logger.service';
 export class EntryTypeComponent implements OnInit {
 
   pageTitle = '';
-  entryType = {};
+  entryType: any;
   docFilter = '';
 
   constructor(
@@ -52,6 +52,20 @@ export class EntryTypeComponent implements OnInit {
       LoggerService.error('page error!');
       this.sayonaraService.toggleSayonaraError();
     });
+  }
+
+  // Function to return entries sorted by their titles
+  getSortedEntries() {
+    // Ensure we have the correct values
+    if(!this.entryType ||
+    !this.entryType.entries) return false;
+
+    // Return the sorted entry list
+    return this.entryType.entries.sort((left, right) => {
+      if(left.name < right.name) return -1;
+      if(left.name > right.name) return 1;
+      return 0;
+    })
   }
 
   // Function to return if the entry is valid for the filter

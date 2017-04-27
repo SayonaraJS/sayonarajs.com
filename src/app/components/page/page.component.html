@@ -5,17 +5,19 @@
     </div>
 
     <!-- Repeat through all of our entry types -->
-    <md-card class="c-page__entry-container__entry"
-      *ngFor="let entryType of page.entryTypes">
-        <!-- List the entry type -->
-        <h3 class=" c-page__entry-container__entry__title
-        center-text">
-          <a (click)="routeNavigator.goToEntryType(page.title, entryType.title)">
-            {{entryType.title}}
-          </a>
-        </h3>
-        <div class="center-text">
-          {{entryType.description}}
-        </div>
-    </md-card>
+    <div class="c-page__entry-container">
+      <md-card class="c-page__entry-container__entry"
+        *ngFor="let entryType of page.entryTypes">
+          <!-- List the entry type -->
+          <h3 class=" c-page__entry-container__entry__title
+          center-text">
+            <a (click)="routeNavigator.goToEntryType(page.title, entryType.title)">
+              {{entryType.title}}
+            </a>
+          </h3>
+          <div class="center-text">
+            {{entryType.description}}
+          </div>
+      </md-card>
+    </div>
 </div>

@@ -1,6 +1,8 @@
 //Colors
 $standard: #050505;
-$inverse: #F9F9F9;
+$inverse: #FCFCFC;
+$sayonara: #67bcb0;
+$sayonaraAccent: #bc6791;
 
 //Dark transparent
 $transparent: rgba(0, 0, 0, 0);
@@ -15,5 +17,6 @@ $transparent-light-50: rgba(255, 255, 255, 0.5);
 $transparent-light-75: rgba(255, 255, 255, 0.75);
 
 $bgColor: $inverse;
-$navColor: #FFFFFF;
+$navColor: darken(#67bcb0, 25%);
 $links: #4a9cee;
+$linksVisited: $sayonaraAccent;

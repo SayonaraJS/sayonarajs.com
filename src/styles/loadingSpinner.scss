@@ -56,10 +56,10 @@
        width:60px;
        margin:0px auto;
        animation: rotation .6s infinite linear;
-       border-left:6px solid lighten($links, 20%);
-       border-right:6px solid lighten($links, 20%);
-       border-bottom:6px solid lighten($links, 20%);
-       border-top:6px solid $links;
+       border-left:6px solid lighten($sayonaraAccent, 20%);
+       border-right:6px solid lighten($sayonaraAccent, 20%);
+       border-bottom:6px solid lighten($sayonaraAccent, 20%);
+       border-top:6px solid $sayonaraAccent;
        border-radius:100%;
        z-index: 2;
        margin-bottom: 10px;

@@ -1,12 +1,22 @@
+// Declare nav variables
+$activePage: lighten($navColor, 25%);
+
 .nav {
-    background-color: $bgColor;
+
+    @include element('desktop-nav') {
+      background-color: $navColor;
+      color: $inverse;
+      border-radius: 0px;
+    }
 
     @include element('sidenav') {
+        background-color: $navColor;
+        color: $inverse;
+
         position: absolute;
         min-width: calc(#{$mobile-width} - 100px);
         width: calc(#{$mobile-width} - 100px);
         padding: 10px;
-        background-color: $navColor;
 
         @include element('page-link') {
             font-size: 20px;
@@ -20,19 +30,20 @@
             }
 
             @include modifier('active-page') {
-                //background-color: lighten( $navColor, 4% );
                 text-decoration: underline;
             }
         }
     }
 
     @include element('title') {
+        color: $inverse;
         margin-left: 10px;
         margin-right: 10px;
     }
 
 
     @include element('page-link') {
+        color: $inverse;
         display: flex;
         align-items: center;
         margin-left: 10px;
@@ -43,7 +54,7 @@
         cursor: pointer;
 
         @include modifier('active-page') {
-            background-color: lighten( $navColor, 4% );
+            background-color: $activePage;
         }
 
         //Hide on mobile displays
@@ -53,6 +64,7 @@
     };
 
     @include element('icon-button') {
+      color: $inverse;
       box-shadow: none;
       user-select: none;
       background: none;
@@ -98,7 +110,10 @@
 .c-app {
     @extend .center;
 
-    max-width: $large-desktop-width;
+    background-color: $bgColor;
+    color: $standard;
+
+    max-width: $tablet-width;
     padding-top: 10px;
     padding-bottom: 10px;
     padding-left: 10px;

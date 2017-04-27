@@ -1,5 +1,5 @@
 //Import our fonts (from google Fonts)
-@import url('https://fonts.googleapis.com/css?family=Droid+Sans|Open+Sans|Roboto|Source+Sans+Pro|Ubuntu');
+@import url('https://fonts.googleapis.com/css?family=Lora|Noto+Sans|Open+Sans|Raleway');
 
 //Styles that apply to the entire page
 html {
@@ -18,10 +18,19 @@ app-root {
 
 
 * {
-    font-family: 'Roboto','Open Sans', 'Source Sans Pro', 'Droid Sans', 'Ubuntu', sans-serif;
+    font-family: 'Noto Sans', 'Open Sans', 'Raleway','Lora', sans-serif;
 }
+
 img {
     max-width: 100%;
+}
+
+a {
+  color: $links;
+
+  &:visited {
+    color: darken($linksVisited, 25%);
+  }
 }
 
 //General Classes we can use app wide

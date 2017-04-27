@@ -1,21 +1,24 @@
 <div class="c-entry-type animated fadeIn">
-  <h1 class="center-text">
-    {{entryType.title}}
-  </h1>
-  <div>
-    {{entryType.description}}
-  </div>
 
-  <!-- Search box to look through the documentation entries -->
-  <div class="c-entry-type__search">
-    <md-input-container class="c-entry-type__search__input">
-      <input mdInput placeholder="Search for a doc..." [(ngModel)]="docFilter">
-    </md-input-container>
+  <div *ngIf="entryType">
+    <h1 class="center-text">
+      {{entryType.title}}
+    </h1>
+    <div>
+      {{entryType.description}}
+    </div>
+
+    <!-- Search box to look through the documentation entries -->
+    <div class="c-entry-type__search">
+      <md-input-container class="c-entry-type__search__input">
+        <input mdInput placeholder="Search for a doc..." [(ngModel)]="docFilter">
+      </md-input-container>
+    </div>
   </div>
 
   <div class="c-entry-type__entry-list center-text">
     <div class="c-entry-type__entry-list__entry"
-      *ngFor="let entry of entryType.entries">
+      *ngFor="let entry of getSortedEntries()">
       <div class="c-entry-type__entry-list__entry__title"
       (click)="routeNavigator
         .goToEntry(pageTitle, entryType.title, entry.title)"
