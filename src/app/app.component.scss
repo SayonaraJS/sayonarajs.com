@@ -118,6 +118,7 @@ $activePage: lighten($navColor, 25%);
     padding-bottom: 10px;
     padding-left: 10px;
     padding-right: 10px;
+    margin-top: 10px;
 
     @include all-mobile() {
         width: 95%;
