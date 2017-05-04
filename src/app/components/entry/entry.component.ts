@@ -16,7 +16,8 @@ export class EntryComponent implements OnInit {
 
   pageTitle = '';
   entryTypeTitle = '';
-  entry = {};
+  // Cast to any to allow as a normal JSON object
+  entry:any = {};
 
   constructor(
     private activatedRoute: ActivatedRoute,
