@@ -17,7 +17,8 @@ export class PageComponent implements OnInit {
   //If our page is ready to be displayed
   pageLoaded = false;
 
-  page = {};
+  // Cast to any to allow as a normal JSON object
+  page:any = {};
 
   constructor(
     private activatedRoute: ActivatedRoute,
